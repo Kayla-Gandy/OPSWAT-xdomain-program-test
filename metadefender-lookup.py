@@ -111,4 +111,6 @@ if __name__ == "__main__":
         raise OSError("File path not provided.")
     with open("keys.json", "r") as key_file:
         APIKey = json.load(key_file)["Meta_Cloud_Key"]
+    if not APIKey:
+        raise OSError("API key not provided in file \'keys.json\'.")
     scan_file(sys.argv[1], APIKey)
